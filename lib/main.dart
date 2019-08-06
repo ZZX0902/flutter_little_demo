@@ -10,6 +10,10 @@ import 'Textfield/textfield.dart';
 import 'shared_preferences/sharedpreferences.dart';
 import 'rightback/rightback.dart';
 import 'Beziercurve/Beziercurve.dart';
+import 'videoplayer/videoplayer.dart';
+import 'videoplayerchewie/videoplayerchewie.dart';
+import 'position/position.dart';
+import 'videopositionauto/antoplay.dart';
 void main() => runApp(MaterialApp(
   title:'flutter_little_demo',
   home: Start(),
@@ -22,8 +26,11 @@ class Start extends StatelessWidget {
         title: Text('flutter demo'),
         elevation: 0.0,
       ),
-      body: Center(
+      body:Center(
+      child:SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center ,
           children: <Widget>[
             RouteButton(),
             RouteButton2(),
@@ -36,14 +43,23 @@ class Start extends StatelessWidget {
             RouteButton9(),
             RouteButton10(),
             RouteButton11(),
+            RouteButton12(),
+            RouteButton13(),
+            RouteButton14(),
+            RouteButton15(),
 
 
 
 
 
 
-      ],
+
+
+
+
+          ],
         )
+      )
 
       ),
     );
@@ -189,6 +205,58 @@ class RouteButton11 extends StatelessWidget {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => Beziercurve()));      },
       child: Text('Bézier curve'),
+    );
+  }
+
+}
+class RouteButton12 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+
+    return RaisedButton(
+      onPressed: (){
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => videoplayer()));      },
+      child: Text('视频播放器'),
+    );
+  }
+
+}
+class RouteButton13 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+
+    return RaisedButton(
+      onPressed: (){
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => videoplayerchewie()));      },
+      child: Text('视频播放器chewie'),
+    );
+  }
+
+}
+class RouteButton14 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+
+    return RaisedButton(
+      onPressed: (){
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => Position()));},
+      child: Text('获取控件位置'),
+    );
+  }
+
+}
+class RouteButton15 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+
+    return RaisedButton(
+      onPressed: (){
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => AutoPlay()));},
+      child: Text("获取屏幕位置播放器自动播放"),
     );
   }
 
