@@ -12,47 +12,23 @@ VideoPlayerController _controller;
 String url =
     'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4';
 
-class AutoPlay extends StatefulWidget {
+class AutoPlay02 extends StatefulWidget {
   @override
-  _AutoPlayState createState() => _AutoPlayState();
+  _AutoPlay02State createState() => _AutoPlay02State();
 }
 
-class _AutoPlayState extends State<AutoPlay> {
+class _AutoPlay02State extends State<AutoPlay02> {
   @override
   GlobalKey anchorKey = GlobalKey();
   ScrollController _Scrollcontroller = new ScrollController();
   double offsetx = 0.0;
   double offsety = 0.0;
-  double videowidth = 0.0;
-  double videoheight = 0.0;
+
   double minpalyY = 0.0;
   double maxpalyY = 0.0;
   double videocenterpointY = 0.0;
   bool _autoplay = false;
 
-//  void _showposition() {
-//    final RenderBox renderBox = anchorKey.currentContext.findRenderObject();
-//    final videooffset = renderBox.localToGlobal(Offset.zero);
-//    final size = renderBox.size;
-//    offsetx = videooffset.dx;
-//    offsety = videooffset.dy;
-//    videowidth = size.width;
-//    videoheight = size.height;
-//    minpalyY =
-//        (heightq - toolheight - 30.0 - videoheight) / 2.0 + toolheight + 30.0;
-//    maxpalyY = minpalyY + videoheight;
-//    videocenterpointY = offsety + videoheight / 2;
-//    setState(() {});
-//
-//    print("x:$offsetx" + " " + "y:$offsety");
-//    print("播放器宽度：$videowidth");
-//    print("播放器高度：$videoheight");
-//    print("播放区域最小Y：$minpalyY");
-//    print("播放区域最大Y：$maxpalyY");
-//    print("播放器中心点Y：$videocenterpointY");
-//    print("顶部状态栏高度：$toolheight");
-
-//  }
 
   void initState() {
     super.initState();
@@ -63,6 +39,7 @@ class _AutoPlayState extends State<AutoPlay> {
     });
     setState(() {});
   }
+  
 
   void dispose() {
     _controller.dispose();
@@ -84,19 +61,16 @@ class _AutoPlayState extends State<AutoPlay> {
   void _position() {
     final RenderBox renderBox = anchorKey.currentContext.findRenderObject();
     final videooffset = renderBox.localToGlobal(Offset.zero);
-    final size = renderBox.size;
     offsetx = videooffset.dx;
     offsety = videooffset.dy;
-    videowidth = size.width;
-    videoheight = size.height;
-    minpalyY = (heightq - toolheight - 30.0 - videoheight) / 2.0 + toolheight + 30.0;
-    maxpalyY = minpalyY + videoheight;
-    videocenterpointY = offsety + videoheight / 2;
+
+    minpalyY =
+        (heightq - toolheight - 30.0 - 200.0) / 2.0 + toolheight + 30.0;
+    maxpalyY = minpalyY + 200.0;
+    videocenterpointY = offsety + 200.0 / 2;
     setState(() {});
 
-    print("x:$offsetx" + " " + "y:$offsety");
-    print("播放器宽度：$videowidth");
-    print("播放器高度：$videoheight");
+    print("x:$offsetx" + " "+"y:$offsety");
     print("播放区域最小Y：$minpalyY");
     print("播放区域最大Y：$maxpalyY");
     print("播放器中心点Y：$videocenterpointY");
@@ -104,23 +78,23 @@ class _AutoPlayState extends State<AutoPlay> {
   }
 
   Widget videoview() {
-    return Container(
-      color: Colors.black,
-      key: anchorKey,
-      width: widthq,
-      child: Chewie(
+     return Chewie(
           controller: ChewieController(
-        videoPlayerController: _controller,
-        aspectRatio: 16 / 9,
-        autoPlay: _autoplay,
-        looping: true,
-        placeholder: new Container(
-          color: Colors.grey,
-        ),
-        autoInitialize: true,
-      )),
-    );
+            videoPlayerController: _controller,
+            aspectRatio: 16 / 9,
+            autoPlay: _autoplay,
+            looping: true,
+            placeholder: new Container(
+              color: Colors.grey,
+            ),
+            autoInitialize: true,
+          ));
   }
+  void didUpdateWidget(AutoPlay02 oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    print("didUpdateWidget");
+  }
+
 
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -139,7 +113,13 @@ class _AutoPlayState extends State<AutoPlay> {
                 height: 500.0,
                 color: Colors.redAccent,
               ),
-              videoview(),
+              Container(
+                color: Colors.black,
+                key: anchorKey,
+                width: widthq,
+                child: videoview(),
+
+              ),
               Container(
                 width: 300.0,
                 height: 1000.0,

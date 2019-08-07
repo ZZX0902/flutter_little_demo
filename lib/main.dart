@@ -14,6 +14,8 @@ import 'videoplayer/videoplayer.dart';
 import 'videoplayerchewie/videoplayerchewie.dart';
 import 'position/position.dart';
 import 'videopositionauto/antoplay.dart';
+import 'autoplay2/autoplay2.dart';
+import 'autoplaylist/autoplaylist.dart';
 void main() => runApp(MaterialApp(
   title:'flutter_little_demo',
   home: Start(),
@@ -44,17 +46,12 @@ class Start extends StatelessWidget {
             RouteButton10(),
             RouteButton11(),
             RouteButton12(),
+            RouteButton15(),
+            RouteButton16(),
+            RouteButton17(),
+
             RouteButton13(),
             RouteButton14(),
-            RouteButton15(),
-
-
-
-
-
-
-
-
 
 
           ],
@@ -257,6 +254,32 @@ class RouteButton15 extends StatelessWidget {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => AutoPlay()));},
       child: Text("获取屏幕位置播放器自动播放"),
+    );
+  }
+
+}
+class RouteButton16 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+
+    return RaisedButton(
+      onPressed: (){
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => AutoPlay02()));},
+      child: Text("获取屏幕位置播放器自动播放02"),
+    );
+  }
+
+}
+class RouteButton17 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+
+    return RaisedButton(
+      onPressed: (){
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => Autoplaylist()));},
+      child: Text("获取屏幕位置播放器自动播放list"),
     );
   }
 
